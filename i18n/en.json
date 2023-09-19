@@ -37,6 +37,8 @@
 	"language-switch": "Switch language",
 	"help-translate": "Help translate this tool",
         "kraken-options": "Kraken options",
+        "kraken-segmentation-model-help": "Try an alternative segmentation model if the default gives poor results.",
+        "kraken-segmentation-model-label": "Kraken segmentation model",
 	"langs-placeholder": "Leave blank for automatic language detection.",
 	"langs-param-error": "The following {{PLURAL:$1|language is|languages are}} not supported by the OCR engine: $2",
 	"loading-message": "Performing transcription...",
