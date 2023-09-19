@@ -9,4 +9,5 @@ nelmio_api_doc:
             - ^/api$
             - ^/api/available_langs$
             - ^/api/tesseract/available_psms$
+            - ^/api/available_segmentation_models$
             - ^/api/transkribus/available_line_ids$
