@@ -105,6 +105,15 @@ abstract class EngineBase {
 	}
 
 	/**
+	 * Get segmentation models accepted by the engine.
+	 * @return string[] Names of segmentation models.
+	 */
+	public function getValidSegmentationModels(): array {
+		$models = [];
+		return $models;
+	}
+
+	/**
 	 * Get the title of the given model, falling back to a language name if the
 	 * model ID happens to match a language code.
 	 * @param string|null $model
