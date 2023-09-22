@@ -26,7 +26,7 @@ curl -s -o "$IMAGE" "$URL"
 if test -f "$IMAGE"; then
   if test -n "$BOX"; then
     echo "gm mogrify -crop $BOX $IMAGE" >> $TMP/kraken.log
-    gm mogrify -crop "$BOX" "$IMAGE"
+    gm mogrify -crop "$BOX" "$IMAGE" >> $TMP/kraken.log 2>&1
   fi
   echo "kraken -i $IMAGE $TEXT segment $SEGMENTATION_MODEL ocr $OCR_MODEL" >> $TMP/kraken.log
   kraken -i "$IMAGE" "$TEXT" segment $SEGMENTATION_MODEL ocr $OCR_MODEL --threads $OMP_NUM_THREADS >> $TMP/kraken.log 2>&1
