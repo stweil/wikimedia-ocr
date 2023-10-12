@@ -1,6 +1,6 @@
 {
 	"@metadata": {},
-	"title": "WikimediaOCR",
+	"title": "WikimediaOCR – Kraken Test",
 	"subtitle": "A tool to transcribe text from scanned images on Wikimedia Commons, for use on Wikisource and elsewhere.",
 	"form-heading": "Transcribe an image",
 	"image-url": "Image URL",
