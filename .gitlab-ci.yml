@@ -10,7 +10,7 @@ ocr-test:
       apt update -q
       apt install -y curl php php-imagick php-ast php-bcmath php-curl php-gd php-dom php-intl php-simplexml php-xml tesseract-ocr-all nodejs npm
       curl -sS https://getcomposer.org/installer | php
-      php composer.phar ci
+      php composer.phar install
       npm ci
       php composer.phar test
       npm run test
