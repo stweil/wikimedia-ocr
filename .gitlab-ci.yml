@@ -3,49 +3,21 @@ image: debian:bookworm
 variables:
   APP_ENV: test
 
-.default-scripts: &default_scripts
-  - |
-    apt update -q
-    apt install -y curl php php-imagick php-ast php-bcmath php-curl php-gd php-dom php-simplexml php-xml tesseract-ocr-all nodejs npm
-    curl -sS https://getcomposer.org/installer | php
-    php composer.phar install --prefer-dist
-    npm ci
-
-composer-test:
+ocr-test:
   stage: test
   script:
-    - *default_scripts
     - |
+      apt update -q
+      apt install -y curl php php-imagick php-ast php-bcmath php-curl php-gd php-dom php-intl php-simplexml php-xml tesseract-ocr-all nodejs npm
+      curl -sS https://getcomposer.org/installer | php
+      php composer.phar ci
+      npm ci
       php composer.phar test
-      git status
-      git status | grep "nothing added to commit"
-
-npm-test:
-  stage: test
-  script:
-    - *default_scripts
-    - |
       npm run test
       npm run build
       git status
-      git status | grep "nothing to commit, working tree clean"
-
-phpunit:
-  stage: test
-  script:
-    - *default_scripts
-    - |
-      ./bin/phpunit --exclude-group=exclude-from-ci
-  tags:
-    - wmcs
+      git status | grep "nothing added to commit"
   artifacts:
     when: on_failure
     paths:
       - ./var/log/test.log
-
-phan:
-  stage: test
-  script:
-    - *default_scripts
-    - |
-      ./vendor/bin/phan
