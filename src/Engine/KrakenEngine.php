@@ -44,12 +44,7 @@ class KrakenEngine extends EngineBase {
 
 		[ $validLangs, $invalidLangs ] = $this->filterValidLangs( $langs, $invalidLangsMode );
 		if ( $validLangs ) {
-			# var_dump($validLangs);
-			# var_dump($this->getLangCodes($validLangs));
-			# var_dump(...$this->getLangCodes($validLangs));
-			# $model = implode( ',',$this->getLangCodes( $validLangs ) );
-			# kraken does not support more than one model, so use the first one.
-			$ocrModel = $this->getLangCodes( $validLangs )[0];
+			$ocrModel = $validLangs[0];
 		} else {
 			$ocrModel = 'german_print';
 		}
