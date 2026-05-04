@@ -22,3 +22,5 @@ ocr-test:
     when: on_failure
     paths:
       - ./var/log/test.log
+  tags:
+    - wmcs
