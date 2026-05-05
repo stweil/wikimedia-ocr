@@ -921,6 +921,24 @@
 			"title": "IsiZulu / Zulu / Latn / Supports handwriting"
 		}
 	},
+	"kraken": {
+		"all_arabic_scripts": {
+			"languages": [ "all_arabic_scripts" ],
+			"title": "Print (Arabic script)"
+		},
+		"arabic_best": {
+			"languages": [ "arabic_best" ],
+			"title": "Print (Arabic script, best model)"
+		},
+		"german_handwriting": {
+			"languages": [ "german_handwriting" ],
+			"title": "Handwriting (Latin script)"
+		},
+		"german_print": {
+			"languages": [ "german_print" ],
+			"title": "Print (Latin script)"
+		}
+	},
 	"tesseract": {
 		"Arabic": {
 			"languages": [ "Arabic" ],
