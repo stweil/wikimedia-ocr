@@ -70,13 +70,16 @@
 			"./bin/console cache:clear",
 			"./bin/console assets:install"
 		],
+		"check-kraken": "./check_kraken.sh",
 		"check-tesseract": "./check_tesseract.sh",
 		"post-install-cmd": [
 			"@auto-scripts",
+			"@check-kraken",
 			"@check-tesseract"
 		],
 		"post-update-cmd": [
 			"@auto-scripts",
+			"@check-kraken",
 			"@check-tesseract"
 		],
 		"test": [
@@ -89,6 +92,7 @@
 			"./bin/console lint:twig ./templates",
 			"./bin/console lint:yaml ./config",
 			"minus-x check .",
+			"@check-kraken",
 			"@check-tesseract",
 			"phpunit"
 		],
