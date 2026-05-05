@@ -921,7 +921,173 @@
 			"title": "IsiZulu / Zulu / Latn / Supports handwriting"
 		}
 	},
+	"kraken": {
+		"all_arabic_scripts": {
+			"languages": [ "all_arabic_scripts" ],
+			"title": "Print (Arabic script)"
+		},
+		"arabic_best": {
+			"languages": [ "arabic_best" ],
+			"title": "Print (Arabic script, best model)"
+		},
+		"german_handwriting": {
+			"languages": [ "german_handwriting" ],
+			"title": "Handwriting (Latin script)"
+		},
+		"german_print": {
+			"languages": [ "german_print" ],
+			"title": "Print (Latin script)"
+		}
+	},
 	"tesseract": {
+		"Arabic": {
+			"languages": [ "Arabic" ],
+			"title": "Arabic script"
+		},
+		"Armenian": {
+			"languages": [ "Armenian" ],
+			"title": "Armenian script"
+		},
+		"Bengali": {
+			"languages": [ "Bengali" ],
+			"title": "Bengali script"
+		},
+		"Canadian_Aboriginal": {
+			"languages": [ "Canadian_Aboriginal" ],
+			"title": "Canadian Aboriginal script"
+		},
+		"Cherokee": {
+			"languages": [ "Cherokee" ],
+			"title": "Cherokee script"
+		},
+		"Cyrillic": {
+			"languages": [ "Cyrillic" ],
+			"title": "Cyrillic script"
+		},
+		"Devanagari": {
+			"languages": [ "Devanagari" ],
+			"title": "Devanagari script"
+		},
+		"Ethiopic": {
+			"languages": [ "Ethiopic" ],
+			"title": "Ethiopic script"
+		},
+		"Fraktur": {
+			"languages": [ "Fraktur" ],
+			"title": "Latin script (Fraktur variant)"
+		},
+		"Georgian": {
+			"languages": [ "Georgian" ],
+			"title": "Georgian script"
+		},
+		"Greek": {
+			"languages": [ "Greek" ],
+			"title": "Greek script"
+		},
+		"Gujarati": {
+			"languages": [ "Gujarati" ],
+			"title": "Gujarati script"
+		},
+		"Gurmukhi": {
+			"languages": [ "Gurmukhi" ],
+			"title": "Gurmukhi script"
+		},
+		"HanS": {
+			"languages": [ "HanS" ],
+			"title": "Han script (Simplified)"
+		},
+		"HanS_vert": {
+			"languages": [ "HanS_vert" ],
+			"title": "Han script (Simplified, Vertical)"
+		},
+		"HanT": {
+			"languages": [ "HanT" ],
+			"title": "Han script (Traditional)"
+		},
+		"HanT_vert": {
+			"languages": [ "HanT_vert" ],
+			"title": "Han script (Traditional, Vertical)"
+		},
+		"Hangul": {
+			"languages": [ "Hangul" ],
+			"title": "Hangul script"
+		},
+		"Hangul_vert": {
+			"languages": [ "Hangul_vert" ],
+			"title": "Hangul script (Vertical)"
+		},
+		"Hebrew": {
+			"languages": [ "Hebrew" ],
+			"title": "Hebrew script"
+		},
+		"Japanese": {
+			"languages": [ "Japanese" ],
+			"title": "Japanese script"
+		},
+		"Japanese_vert": {
+			"languages": [ "Japanese_vert" ],
+			"title": "Japanese script (Vertical)"
+		},
+		"Kannada": {
+			"languages": [ "Kannada" ],
+			"title": "Kannada script"
+		},
+		"Khmer": {
+			"languages": [ "Khmer" ],
+			"title": "Khmer script"
+		},
+		"Lao": {
+			"languages": [ "Lao" ],
+			"title": "Lao script"
+		},
+		"Latin": {
+			"languages": [ "Latin" ],
+			"title": "Latin script"
+		},
+		"Malayalam": {
+			"languages": [ "Malayalam" ],
+			"title": "Malayalam script"
+		},
+		"Myanmar": {
+			"languages": [ "Myanmar" ],
+			"title": "Myanmar script"
+		},
+		"Oriya": {
+			"languages": [ "Oriya" ],
+			"title": "Oriya script"
+		},
+		"Sinhala": {
+			"languages": [ "Sinhala" ],
+			"title": "Sinhala script"
+		},
+		"Syriac": {
+			"languages": [ "Syriac" ],
+			"title": "Syriac script"
+		},
+		"Tamil": {
+			"languages": [ "Tamil" ],
+			"title": "Tamil script"
+		},
+		"Telugu": {
+			"languages": [ "Telugu" ],
+			"title": "Telugu script"
+		},
+		"Thaana": {
+			"languages": [ "Thaana" ],
+			"title": "Thaana script"
+		},
+		"Thai": {
+			"languages": [ "Thai" ],
+			"title": "Thai script"
+		},
+		"Tibetan": {
+			"languages": [ "Tibetan" ],
+			"title": "Tibetan script"
+		},
+		"Vietnamese": {
+			"languages": [ "Vietnamese" ],
+			"title": "Vietnamese script"
+		},
 		"afr": {
 			"languages": [ "af" ],
 			"title": "Afrikaans"
