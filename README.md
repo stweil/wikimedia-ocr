@@ -9,14 +9,14 @@ Documentation:
 * For system administrators: https://wikitech.wikimedia.org/wiki/Nova_Resource:Wikisource/Wikimedia_OCR
 * For Wikisource users: https://www.mediawiki.org/wiki/Help:Extension:Wikisource/Wikimedia_OCR
 * Of the API: https://ocr.wmcloud.org/api/doc
-* For contributors: [CONTRIBUTING.md](https://github.com/wikimedia/wikimedia-ocr/blob/main/CONTRIBUTING.md)
+* For contributors: [CONTRIBUTING.md](https://gitlab.wikimedia.org/toolforge-repos/ocr/-/blob/main/CONTRIBUTING.md)
 
 Please report bugs via Phabricator: https://phabricator.wikimedia.org/tag/wikimedia_ocr
 
-![CI](https://github.com/wikimedia/wikimedia-ocr/workflows/CI/badge.svg)
+![CI](https://gitlab.wikimedia.org/toolforge-repos/ocr/badges/main/pipeline.svg?ignore_skipped=true)
 
 ## Licenses
 
 * Wikimedia OCR is GPL 3.0 or later (see the LICENSE file)
 * [Crop_-_The_Noun_Project.svg](https://commons.wikimedia.org/wiki/File:Crop_-_The_Noun_Project.svg) is CC0
-* [OOjs_UI_icon_move.svg](https://commons.wikimedia.org/wiki/File:OOjs_UI_icon_move.svg) is CC-BY-SA-4.0 
+* [OOjs_UI_icon_move.svg](https://commons.wikimedia.org/wiki/File:OOjs_UI_icon_move.svg) is CC-BY-SA-4.0
