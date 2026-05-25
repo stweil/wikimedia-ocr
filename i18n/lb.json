@@ -15,6 +15,7 @@
 	"language-code": "Sproochen (optional)",
 	"engine-name-transkribus": "Transkribus-OCR",
 	"submit": "Ganz Säit transkribéieren",
+	"copy-to-clipboard": "An den Tëschespäicher kopéieren",
 	"copied-to-clipboard": "Kopéiert!",
 	"documentation": "Dokumentatioun",
 	"version": "Versioun $1",
