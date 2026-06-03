@@ -23,8 +23,7 @@ use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBag;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
-// phpcs:ignore MediaWiki.Classes.UnusedUseStatement.UnusedUse
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Contracts\Cache\CacheInterface;
 use Symfony\Contracts\Cache\ItemInterface;
 
@@ -79,7 +78,10 @@ class OcrController extends AbstractController {
 		EngineFactory $engineFactory,
 		CacheInterface $cache
 	) {
-		$this->request = $requestStack->getCurrentRequest();
+		$request = $requestStack->getCurrentRequest();
+		if ( $request ) {
+			$this->request = $request;
+		}
 		$this->session = $requestStack->getSession();
 		$this->intuition = $intuition;
 		$this->engineFactory = $engineFactory;
@@ -91,10 +93,7 @@ class OcrController extends AbstractController {
 	 * @suppress PhanSuspiciousValueComparison
 	 */
 	private function setup(): void {
-		$requestedEngine = $this->request->query->get( 'engine', static::$params['engine'] );
-		if ( is_array( $requestedEngine ) ) {
-			$requestedEngine = $requestedEngine[0] ?? static::$params['engine'];
-		}
+		$requestedEngine = (string)$this->request->query->get( 'engine', static::$params['engine'] );
 		try {
 			$this->engine = $this->engineFactory->get( $requestedEngine );
 		} catch ( EngineNotFoundException $e ) {
@@ -116,7 +115,7 @@ class OcrController extends AbstractController {
 		}
 		static::$params['langs'] = $this->getLangs( $this->request );
 		static::$params['image_hosts'] = $this->engine->getImageHosts();
-		$crop = $this->request->query->get( 'crop' );
+		$crop = $this->request->query->all()['crop'] ?? null;
 		if ( !is_array( $crop )
 			|| isset( $crop['width'] ) && !$crop['width']
 			|| isset( $crop['height'] ) && !$crop['height']
@@ -175,9 +174,9 @@ class OcrController extends AbstractController {
 
 	/**
 	 * The main form and result page.
-	 * @Route("/", name="home")
 	 * @return Response
 	 */
+	#[Route( '/', name: 'home' )]
 	public function homeAction(): Response {
 		$this->setup();
 
@@ -219,8 +218,6 @@ class OcrController extends AbstractController {
 	/**
 	 * Run OCR on a single image.
 	 *
-	 * @Route("/api", name="api", methods={"GET"})
-	 * @Route("/api.php", name="apiPhp", methods={"GET"})
 	 * @OA\Parameter(
 	 *     name="engine",
 	 *     in="query",
@@ -287,6 +284,8 @@ class OcrController extends AbstractController {
 	 * @OA\Response(response=200, description="The OCR text, and other data.")
 	 * @return JsonResponse
 	 */
+	#[Route( '/api', name: 'api', methods: [ "GET" ] )]
+	#[Route( '/api.php', name: 'apiPhp', methods: [ "GET" ] )]
 	public function apiAction(): JsonResponse {
 		try {
 			$this->setup();
@@ -313,9 +312,9 @@ class OcrController extends AbstractController {
 	 * Returns a simplified map of engine->{code: title} matching the shape
 	 * previously provided by the available_langs API.
 	 *
-	 * @Route("/api/models", name="apiModels", methods={"GET"})
 	 * @return JsonResponse
 	 */
+	#[Route( '/api/models', name: 'apiModels', methods: [ "GET" ] )]
 	public function apiModelsAction(): JsonResponse {
 		$path = $this->getParameter( 'kernel.project_dir' ) . '/public/models.json';
 		$raw = json_decode( file_get_contents( $path ), true );
@@ -332,7 +331,6 @@ class OcrController extends AbstractController {
 	/**
 	 * Get a list of models available for use with a specific OCR engine.
 	 *
-	 * @Route("/api/available_langs", name="apiLangs", methods={"GET"})
 	 * @OA\Parameter(
 	 *     name="engine",
 	 *     in="query",
@@ -343,6 +341,7 @@ class OcrController extends AbstractController {
 	 * @OA\Response(response=200, description="List of available model codes and names, in JSON format.")
 	 * @return JsonResponse
 	 */
+	#[Route( '/api/available_langs', name: 'apiLangs', methods: [ "GET" ] )]
 	public function apiAvailableLangsAction(): JsonResponse {
 		$this->setup();
 		return $this->getApiResponse( [
@@ -354,10 +353,10 @@ class OcrController extends AbstractController {
 	/**
 	 * Get a list of PSMs available for use with Tesseract.
 	 *
-	 * @Route("/api/tesseract/available_psms", name="apiPsms", methods={"GET"})
 	 * @OA\Response(response=200, description="List of available Tesseract PSM values and labels, in JSON format.")
 	 * @return JsonResponse
 	 */
+	#[Route( '/api/tesseract/available_psms', name: 'apiPsms', methods: [ "GET" ] )]
 	public function apiAvailablePsms(): JsonResponse {
 		$this->setup();
 		/** @var TesseractEngine */
@@ -370,11 +369,11 @@ class OcrController extends AbstractController {
 	/**
 	 * Get a list of available line detection IDs.
 	 *
-	 * @Route("/api/transkribus/available_line_ids", name="apiLineIds", methods={"GET"})
 	 * OA\Response(response=200, description="List of available line detection model IDs, in JSON format")
 	 * phpcs:enable
 	 * @return JsonResponse
 	 */
+	#[Route( '/api/transkribus/available_line_ids', name: 'apiLineIds', methods: [ "GET" ] )]
 	public function apiAvailableLineDetectionModelIds(): JsonResponse {
 		$this->request->query->set( 'engine', 'transkribus' );
 		static::$params['engine'] = 'transkribus';
