@@ -45,7 +45,10 @@ class ExceptionListener {
 		Intuition $intuition,
 		LoggerInterface $tesseractLogger
 	) {
-		$this->request = $requestStack->getCurrentRequest();
+		$request = $requestStack->getCurrentRequest();
+		if ( $request ) {
+			$this->request = $request;
+		}
 		$this->session = $requestStack->getSession();
 		$this->twig = $twig;
 		$this->intuition = $intuition;

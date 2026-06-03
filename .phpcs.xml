@@ -22,4 +22,5 @@
     <exclude-pattern>./public/build/</exclude-pattern>
     <exclude-pattern>./public/bundles/</exclude-pattern>
     <exclude-pattern>./assets/</exclude-pattern>
+    <exclude-pattern>./config/reference.php</exclude-pattern>
 </ruleset>
