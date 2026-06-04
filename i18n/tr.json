@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"HakanIST",
 			"Hedda",
 			"Leo",
 			"Slickdaddy"
@@ -83,5 +84,7 @@
 	"transkribus-job-description": "Açıklama",
 	"transkribus-job-start": "Başladı",
 	"transkribus-job-end": "Bitti",
-	"transkribus-job-waited": "Başlatma gecikmesi (dakika)"
+	"transkribus-job-waited": "Başlatma gecikmesi (dakika)",
+	"rotate-left": "Sola döndür",
+	"rotate-right": "Sağa döndür"
 }

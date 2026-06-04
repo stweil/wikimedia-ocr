@@ -85,5 +85,7 @@
 	"transkribus-job-description": "Опис",
 	"transkribus-job-start": "Почато",
 	"transkribus-job-end": "Завершено",
-	"transkribus-job-waited": "Затримка запуску (хвилини)"
+	"transkribus-job-waited": "Затримка запуску (хвилини)",
+	"rotate-left": "Повернути ліворуч",
+	"rotate-right": "Повернути праворуч"
 }

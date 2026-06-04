@@ -87,5 +87,7 @@
 	"transkribus-job-description": "설명",
 	"transkribus-job-start": "시작됨",
 	"transkribus-job-end": "완료",
-	"transkribus-job-waited": "시작 지연 (분)"
+	"transkribus-job-waited": "시작 지연 (분)",
+	"rotate-left": "왼쪽으로 회전",
+	"rotate-right": "오른쪽으로 회전"
 }

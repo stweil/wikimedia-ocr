@@ -88,5 +88,7 @@
 	"transkribus-job-description": "描述",
 	"transkribus-job-start": "已开始",
 	"transkribus-job-end": "已完成",
-	"transkribus-job-waited": "开始延迟（分钟）"
+	"transkribus-job-waited": "开始延迟（分钟）",
+	"rotate-left": "向左旋转",
+	"rotate-right": "向右旋转"
 }

@@ -85,5 +85,7 @@
 	"transkribus-job-description": "Beschrijving",
 	"transkribus-job-start": "Gestart",
 	"transkribus-job-end": "Voltooid",
-	"transkribus-job-waited": "Startvertraging (minuten)"
+	"transkribus-job-waited": "Startvertraging (minuten)",
+	"rotate-left": "Naar links draaien",
+	"rotate-right": "Naar rechts draaien"
 }

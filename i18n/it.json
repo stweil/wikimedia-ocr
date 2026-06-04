@@ -81,5 +81,7 @@
 	"transkribus-job-description": "Descrizione",
 	"transkribus-job-start": "Iniziato",
 	"transkribus-job-end": "Finito",
-	"transkribus-job-waited": "Ritardo di avvio (minuti)"
+	"transkribus-job-waited": "Ritardo di avvio (minuti)",
+	"rotate-left": "Ruota a sinistra",
+	"rotate-right": "Ruota a destra"
 }
