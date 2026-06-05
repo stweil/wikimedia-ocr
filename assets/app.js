@@ -188,6 +188,17 @@ $( () => {
 				cropperInstance = null;
 			}
 
+			// Capture initial crop data to apply after rotation
+			let initialCropData = null;
+			if ( width.value > 0 && height.value > 0 ) {
+				initialCropData = {
+					x: Number.parseFloat( x.value ),
+					y: Number.parseFloat( y.value ),
+					width: Number.parseFloat( width.value ),
+					height: Number.parseFloat( height.value )
+				};
+			}
+
 			cropperInstance = new Cropper( img, {
 				viewMode: 2,
 				dragMode: 'move',
@@ -209,6 +220,11 @@ $( () => {
 					// Initialize rotation if present
 					if ( rotate && rotate.value && rotate.value !== '0' ) {
 						cropperInstance.rotate( Number.parseFloat( rotate.value ) );
+					}
+
+					// Apply the crop data after the potential rotation
+					if ( initialCropData ) {
+						cropperInstance.setData( initialCropData );
 					}
 
 					// Update rotation value from cropper
@@ -239,12 +255,6 @@ $( () => {
 							updateRotationValue();
 						}
 					} );
-				},
-				data: {
-					x: Number.parseFloat( x.value ),
-					y: Number.parseFloat( y.value ),
-					width: Number.parseFloat( width.value ),
-					height: Number.parseFloat( height.value )
 				},
 				crop( event ) {
 					x.value = Math.round( event.detail.x );
