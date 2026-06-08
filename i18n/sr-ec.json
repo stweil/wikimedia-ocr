@@ -1,0 +1,28 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kizule",
+			"Milicevic01"
+		]
+	},
+	"subtitle": "Алатка за транскрибовање текста из слика са Викимедијине оставе за употребу на Викиизворнику и другде.",
+	"form-heading": "Транскрибуј слику",
+	"image-url": "URL слике",
+	"image-alt-text": "Оригинална слика",
+	"language-code": "Језици (необавезно)",
+	"copied-to-clipboard": "Копирано!",
+	"documentation": "Документација",
+	"version": "Верзија $1",
+	"report-issue": "Пријави проблем",
+	"language": "Језик:",
+	"language-switch": "Промени језик",
+	"langs-placeholder": "Оставите празно за аутоматску детекцију језика.",
+	"transkribus-no-lang-error": "Ниједна језик није изабран",
+	"transkribus-job-state": "Стање",
+	"transkribus-job-description": "Опис",
+	"transkribus-job-start": "Започето",
+	"transkribus-job-end": "Завршено",
+	"transkribus-job-waited": "Одложено покретање (у минутима)",
+	"rotate-left": "Ротирај у лево",
+	"rotate-right": "Ротирај у десно"
+}

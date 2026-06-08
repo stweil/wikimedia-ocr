@@ -83,5 +83,7 @@
 	"transkribus-job-description": "Опис",
 	"transkribus-job-start": "Започнато",
 	"transkribus-job-end": "Завршено",
-	"transkribus-job-waited": "Одложување на почетокот (минути)"
+	"transkribus-job-waited": "Одложување на почетокот (минути)",
+	"rotate-left": "Сврти налево",
+	"rotate-right": "Сврти надесно"
 }

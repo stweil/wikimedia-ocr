@@ -13,7 +13,8 @@
 	"form-heading": "轉譯一張圖片",
 	"image-url": "圖像 URL",
 	"image-url-help": "請插入一個托管在維基媒體伺服器的圖片 URL，例如像是：$1",
-	"image-url-error": "圖片 URL必須以{{PLURAL:$1|以下網域名稱|以下網域名稱之一}}為開頭，並且要以有效的副檔名作為結尾：$2",
+	"image-url-error": "圖片 URL 必須是{{PLURAL:$1|以下網域名稱|以下網域名稱之一}}：$2",
+	"image-url-error-extension": "圖片 URL 應具有以下副檔名之一：$1",
 	"image-alt-text": "原始圖片",
 	"language-code": "語言（非必填）",
 	"engine": "OCR 引擎",
@@ -83,5 +84,7 @@
 	"transkribus-job-description": "描述",
 	"transkribus-job-start": "已啟動",
 	"transkribus-job-end": "已完成",
-	"transkribus-job-waited": "啟動延遲（分鐘）"
+	"transkribus-job-waited": "啟動延遲（分鐘）",
+	"rotate-left": "左旋",
+	"rotate-right": "右旋"
 }

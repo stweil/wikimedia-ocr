@@ -27,5 +27,7 @@
 	"transkribus-job-state": "Status",
 	"transkribus-job-description": "Beschreiwung",
 	"transkribus-job-start": "Ugefaangen",
-	"transkribus-job-end": "Fäerdeg"
+	"transkribus-job-end": "Fäerdeg",
+	"rotate-left": "No lénks dréinen",
+	"rotate-right": "No riets dréien"
 }

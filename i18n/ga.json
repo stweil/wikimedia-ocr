@@ -80,5 +80,7 @@
 	"transkribus-job-description": "Cur síos",
 	"transkribus-job-start": "Thosaigh",
 	"transkribus-job-end": "Críochnaithe",
-	"transkribus-job-waited": "Moill tosaithe (nóiméid)"
+	"transkribus-job-waited": "Moill tosaithe (nóiméid)",
+	"rotate-left": "Rothlaigh ar chlé",
+	"rotate-right": "Rothlaigh ar dheis"
 }
