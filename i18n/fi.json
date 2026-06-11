@@ -4,7 +4,8 @@
 			"MITO",
 			"Pyscowicz",
 			"Samoasambia",
-			"Veikk0.ma"
+			"Veikk0.ma",
+			"Wikipeedikko"
 		]
 	},
 	"title": "WikimediaOCR",
@@ -59,5 +60,7 @@
 	"tesseract-internal-error": "Tesseract-moottori kohtasi sisäisen virheen.",
 	"transkribus-empty-response-error": "Tulosta ei voitu jäsentää Transribus API:sta",
 	"transkribus-no-lang-error": "Kieltä ei valittu",
-	"transkribus-multiple-lang-error": "Useita kieliä ei sallita, määritä yksi kieli"
+	"transkribus-multiple-lang-error": "Useita kieliä ei sallita, määritä yksi kieli",
+	"rotate-left": "Kierrä vasemmalle",
+	"rotate-right": "Kierrä oikealle"
 }
