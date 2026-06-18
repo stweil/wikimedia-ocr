@@ -88,5 +88,7 @@
 	"transkribus-job-description": "الوصف",
 	"transkribus-job-start": "بدأ",
 	"transkribus-job-end": "انتهى",
-	"transkribus-job-waited": "تأخير البدء (بالدقائق)"
+	"transkribus-job-waited": "تأخير البدء (بالدقائق)",
+	"rotate-left": "أدر لليسار",
+	"rotate-right": "أدر إلى اليمين"
 }
