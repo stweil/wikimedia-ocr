@@ -3,12 +3,13 @@
 		"authors": [
 			"Apple TD",
 			"MathXplore",
+			"Tensama0415",
 			"もなー(偽物)",
 			"組曲師"
 		]
 	},
 	"title": "WikimediaOCR",
-	"subtitle": "画像からテキストを書き写す",
+	"subtitle": "ウィキメディア・コモンズでスキャンされた画像からテキストを書き写すツール、ウィキソースやその他の場所で使用する。",
 	"image-url": "画像のURL",
 	"language-code": "言語（オプション）",
 	"engine": "OCRエンジン",
