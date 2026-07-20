@@ -37,12 +37,17 @@
 	"api-tooltip": "Dokumentacja API",
 	"version": "Wersja $1",
 	"report-issue": "Zgłoś problem",
+	"language": "Język:",
+	"language-switch": "Zmień język",
+	"help-translate": "Pomóż przetłumaczyć to narzędzie",
 	"langs-placeholder": "Pozostaw puste aby automatycznie rozpoznać język.",
 	"langs-param-error": "{{PLURAL:$1|Następujący język nie jest obsługiwany|Następujące języki nie są obsługiwane}} przez moduł OCR: $2",
 	"loading-message": "Wykonywanie transkrypcji...",
 	"tesseract-options": "Opcje tesseract",
 	"tesseract-psm-label": "Metoda segmentacji stron",
 	"tesseract-psm-1": "Automatyczna segmentacja stron z OSD.",
+	"tesseract-psm-4": "Załóżmy, że mamy pojedynczą kolumnę tekstu o zmiennej wielkości.",
+	"tesseract-psm-5": "Załóżmy, że mamy do czynienia z pojedynczym, jednolitym blokiem tekstu wyrównanego pionowo.",
 	"tesseract-psm-6": "Załóż jeden jednolity blok tekstu.",
 	"tesseract-psm-7": "Traktuj obraz jako jedną linię tekstu.",
 	"tesseract-psm-8": "Traktuj obraz jako jedno słowo.",
@@ -65,5 +70,7 @@
 	"transkribus-job-description": "Opis",
 	"transkribus-job-start": "Rozpoczęto",
 	"transkribus-job-end": "Zakończono",
-	"transkribus-job-waited": "Opóźnienie startu (minuty)"
+	"transkribus-job-waited": "Opóźnienie startu (minuty)",
+	"rotate-left": "Obróć w lewo",
+	"rotate-right": "Obróć w prawo"
 }

@@ -43,5 +43,7 @@
 	"transkribus-job-description": "څرگنداوی",
 	"transkribus-job-start": "پیل شو",
 	"transkribus-job-end": "پای ته ورسېد",
-	"transkribus-job-waited": "پيل ځنډ (دقيقې)"
+	"transkribus-job-waited": "پيل ځنډ (دقيقې)",
+	"rotate-left": "کيڼ اړخ ته تاوول",
+	"rotate-right": "ښي اړخ ته تاوول"
 }

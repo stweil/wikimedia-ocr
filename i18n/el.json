@@ -83,5 +83,7 @@
 	"transkribus-job-description": "Περιγραφή",
 	"transkribus-job-start": "Ξεκίνησε",
 	"transkribus-job-end": "Τελείωσε",
-	"transkribus-job-waited": "Καθυστέρηση έναρξης (λεπτά)"
+	"transkribus-job-waited": "Καθυστέρηση έναρξης (λεπτά)",
+	"rotate-left": "Περιστροφή αριστερά",
+	"rotate-right": "Περιστροφή δεξιά"
 }
