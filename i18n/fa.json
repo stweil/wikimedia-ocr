@@ -6,6 +6,7 @@
 			"Ebraminio",
 			"Jeeputer",
 			"Mfatemi",
+			"Mohammad ebz",
 			"Yoosef Pooranvary"
 		]
 	},
@@ -15,6 +16,7 @@
 	"image-url": "نشانی تصویر",
 	"image-url-help": "نشانی URL تصویری را که در کارگزار ویکی‌مدیا میزبانی شده است را وارد کنید، مانند: $1",
 	"image-url-error": "نشانی URL تصویر باید با {{PLURAL:$1|the following domain name|one of the following domain names}} آغاز شده و با شناسه فایل معتبری پایان یابد: $2",
+	"image-url-error-extension": "URL تصویر یکی از پسوندهای پرونده زیر را دارد: $1",
 	"image-alt-text": "تصویر اصلی",
 	"language-code": "زبان‌ها (اختیاری)",
 	"engine": "موتور OCR",
@@ -35,7 +37,11 @@
 	"documentation": "مستندات",
 	"api-tooltip": "اسناد API را ببینید",
 	"version": "نسخهٔ $1",
+	"issue-tracker": "ردیاب مشکل",
 	"report-issue": "گزارش مشکل",
+	"language": "زبان:",
+	"language-switch": "تغییر زبان",
+	"help-translate": "به ترجمه این ابزار کمک کنید",
 	"langs-placeholder": "برای شناسایی خودکار زبان، خالی بگذارید.",
 	"langs-param-error": "این {{PLURAL:$1|زبان|زبان‌ها}} توسط موتور OCR پشتیبانی نمی‌شوند: $2",
 	"loading-message": "در حال انجام رونویسی...",
@@ -80,5 +86,7 @@
 	"transkribus-job-description": "توضیحات",
 	"transkribus-job-start": "آغاز شده",
 	"transkribus-job-end": "پایان",
-	"transkribus-job-waited": "تأخیر آغاز (دقیقه)"
+	"transkribus-job-waited": "تأخیر آغاز (دقیقه)",
+	"rotate-left": "چرخش به چپ",
+	"rotate-right": "چرخش به راست"
 }
