@@ -1,4 +1,4 @@
-image: debian:bookworm
+image: debian:trixie
 
 variables:
   APP_ENV: test
@@ -8,12 +8,11 @@ ocr-test:
   script:
     - |
       apt update -q
-      apt install -y curl zip php php-zip php-imagick php-ast php-bcmath php-curl php-gd php-dom php-intl \
+      apt install -y composer curl zip php php-zip php-imagick php-ast php-bcmath php-curl php-gd php-dom php-intl \
         php-simplexml php-xml php-mbstring tesseract-ocr-all nodejs npm jq
-      curl -sS https://getcomposer.org/installer | php
-      php composer.phar install
+      composer install
       npm ci
-      php composer.phar test
+      composer test
       npm run test
       npm run build
       git status
