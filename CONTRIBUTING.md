@@ -1,19 +1,20 @@
-## Requirements #
+# Contributing
 
-* PHP 7.2+
+This file contains information for developers working on the Wikimedia OCR tool.
+
+## Requirements
+
+* PHP 8.2+
 * [Composer](http://getcomposer.org/)
 * [Symfony CLI](https://symfony.com/download)
-
-If you need to make asset changes:
-
 * [Node](https://nodejs.org) with the version specified by the `.nvmrc` [nvm](https://github.com/nvm-sh/nvm#installing-and-updating) file.
 
-## Installation ##
+## Installation
 
 * `composer install`
 * `npm install`
 
-### For Google Cloud Vision Engine ###
+### For Google Cloud Vision Engine
 
 * Add the missing values from `.env` to a `.env.local` file
   * Enable the Cloud Vision API at https://console.cloud.google.com/apis/api/vision.googleapis.com/overview
@@ -22,10 +23,11 @@ If you need to make asset changes:
   * Add a new key for the service account, and download the key's JSON file. Nothing needs to be changed in this file.
   * Add the path of that file to your `.env.local` as `APP_GOOGLE_KEYFILE`.
 
-### For Tesseract OCR Engine ###
+### For Tesseract OCR Engine
+
 * Install [Tesseract](https://tesseract-ocr.github.io) and make sure it's in your `$PATH`
 
-### For Transkribus OCR Engine ###
+### For Transkribus OCR Engine
 
 You can [create a free account](https://readcoop.eu/transkribus/?sc=Transkribus) for Transkribus, and get a small number of free credits.
 
@@ -38,7 +40,8 @@ APP_TRANSKRIBUS_PASSWORD=password
 
 **Note**: You will require sufficient credits in your account to use the Transkribus API.
 
-## Run the application ##
+## Run the application
+
 * `symfony serve` to start the application
 * `npm run watch` if you need to make JS/CSS changes. Compiled assets are not committed.
 
@@ -68,16 +71,13 @@ Then clear the application cache with
 $ ./bin/console c:c
 ```
 
-Docker Developer Environment
-============================
+## Docker
 
-_(beta: this is a very raw setup and needs improvements)_
+The Docker development environment may be incomplete, and improvements are welcome.
 
 ### Requirements
 
-  - [Docker installation instructions][docker-install]
-
-[docker-install]: https://docs.docker.com/install/
+* Docker (see [installation instructions](https://docs.docker.com/install/)).
 
 ### Quickstart
 
@@ -110,3 +110,11 @@ In addition to the model code, every model needs to have at least a `title` and 
 
 * `title`: This is what's shown (unlocalized) to the user.
 * `languages`: An array of ISO639 language codes. This is (or will be) what's used to group models when the user is browsing them.
+
+## Releasing new versions
+
+Releases are done by creating annotated Git tags.
+We do not use GitLab's Releases feature.
+
+The version number shown in the site footer comes from the current Git tag,
+and is not stored anywhere else.
