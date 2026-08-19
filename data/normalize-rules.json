@@ -1,0 +1,38 @@
+{
+	"common": {
+		"diacritics": [
+			{
+				"type": "regex",
+				"pattern": "\u0324",
+				"replacement": "\u0308",
+				"description": "Replace the combining diaeresis below (U+0324), emitted by some OCR engines, with the standard combining diaeresis (U+0308), which the following Unicode normalization can then compose into precomposed letters such as ä, ö and ü."
+			},
+			{
+				"type": "unicode",
+				"form": "NFC",
+				"description": "Canonical composition, e.g. 'a' + combining diaeresis becomes 'ä'."
+			}
+		]
+	},
+	"de": {
+		"old-letters": [
+			{
+				"type": "unicode",
+				"form": "NFKC",
+				"description": "Compatibility composition, which among other things replaces the long s (U+017F) with 's' and the script capital M (U+2133) with 'M'."
+			},
+			{
+				"type": "regex",
+				"pattern": "\uA75B",
+				"replacement": "r",
+				"description": "Replace the Latin small letter r rotunda (U+A75B) with 'r'."
+			},
+			{
+				"type": "regex",
+				"pattern": "\u2E17",
+				"replacement": "-",
+				"description": "Replace the double oblique hyphen (U+2E17) with a regular hyphen-minus."
+			}
+		]
+	}
+}

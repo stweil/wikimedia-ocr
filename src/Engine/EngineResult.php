@@ -35,19 +35,4 @@ class EngineResult {
 	public function getWarnings(): array {
 		return $this->warnings;
 	}
-
-	/**
-	 * Normalize result by replacing some historic characters
-	 */
-	public function normalize() {
-		$this->text = strtr( $this->text, [
-			'ſ' => 's',
-			'ꝛ' => 'r',
-			'ℳ' => 'M',
-			'aͤ' => 'ä',
-			'oͤ' => 'ö',
-			'uͤ' => 'ü',
-			'⸗' => '-',
-		] );
-	}
 }

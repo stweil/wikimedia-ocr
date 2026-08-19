@@ -63,8 +63,17 @@
                 {% include '_transkribus_help.html.twig' with {engine: engine} %}
             </div>
             <div class="form-group">
-                <input type="checkbox" id="normalize" name="normalize" value="1">
                 <label for="normalize">{{ msg('normalize-ocr-text') }}</label>
+                <select id="normalize" name="normalize[]" class="form-control" multiple
+                        size="{{ normalize_groups|length + 1 > 6 ? 6 : normalize_groups|length + 1 }}">
+                    <option value="all" {% if normalize|length == 1 and normalize[0] == 'all' %}selected{% endif %}>
+                        {{ msg('normalize-all') }}
+                    </option>
+                    {% for group in normalize_groups %}
+                        <option value="{{ group }}" {% if group in normalize %}selected{% endif %}>{{ group }}</option>
+                    {% endfor %}
+                </select>
+                <p class="help-block">{{ msg('normalize-ocr-text-help') }}</p>
             </div>
         </fieldset>
 

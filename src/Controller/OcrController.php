@@ -11,8 +11,10 @@ use App\Engine\EngineResult;
 use App\Engine\GoogleCloudVisionEngine;
 use App\Engine\KrakenEngine;
 use App\Engine\TesseractEngine;
+use App\Engine\TextNormalizer;
 use App\Engine\TranskribusEngine;
 use App\Exception\EngineNotFoundException;
+use App\Exception\OcrException;
 use Exception;
 use Krinkle\Intuition\Intuition;
 // phpcs:ignore MediaWiki.Classes.UnusedUseStatement.UnusedUse
@@ -50,6 +52,9 @@ class OcrController extends AbstractController {
 	/** @var EngineFactory */
 	protected $engineFactory;
 
+	/** @var TextNormalizer */
+	protected $textNormalizer;
+
 	/**
 	 * The output params for the view or API response.
 	 * This also serves as where you define the defaults.
@@ -60,7 +65,8 @@ class OcrController extends AbstractController {
 		'image' => '',
 		'engine' => self::DEFAULT_ENGINE,
 		'langs' => [],
-		'normalize' => false,
+		'normalize' => [],
+		'normalize_groups' => [],
 		'psm' => TesseractEngine::DEFAULT_PSM,
 		'crop' => [],
 		'line_id' => TranskribusEngine::DEFAULT_LINEID,
@@ -74,12 +80,14 @@ class OcrController extends AbstractController {
 	 * @param Intuition $intuition
 	 * @param EngineFactory $engineFactory
 	 * @param CacheInterface $cache
+	 * @param TextNormalizer $textNormalizer
 	 */
 	public function __construct(
 		RequestStack $requestStack,
 		Intuition $intuition,
 		EngineFactory $engineFactory,
-		CacheInterface $cache
+		CacheInterface $cache,
+		TextNormalizer $textNormalizer
 	) {
 		$request = $requestStack->getCurrentRequest();
 		if ( $request ) {
@@ -89,6 +97,7 @@ class OcrController extends AbstractController {
 		$this->intuition = $intuition;
 		$this->engineFactory = $engineFactory;
 		$this->cache = $cache;
+		$this->textNormalizer = $textNormalizer;
 	}
 
 	/**
@@ -118,7 +127,10 @@ class OcrController extends AbstractController {
 		}
 		static::$params['langs'] = $this->getLangs( $this->request );
 		static::$params['image_hosts'] = $this->engine->getImageHosts();
-		static::$params['normalize'] = $this->request->query->get( 'normalize' );
+		static::$params['normalize'] = $this->getNormalizeGroups( $this->request );
+		static::$params['normalize_groups'] = $this->textNormalizer->getAvailableGroupIds(
+			static::$params['langs']
+		);
 		$crop = $this->request->query->all()['crop'] ?? null;
 		if ( !is_array( $crop )
 			|| isset( $crop['width'] ) && !$crop['width']
@@ -184,6 +196,41 @@ class OcrController extends AbstractController {
 		// @TODO The default language code needs to vary based on the engine. T280617.
 		//return 0 === count($langsFiltered) ? [$this->intuition->getLang()] : $langsFiltered;
 		return $langsFiltered;
+	}
+
+	/**
+	 * Get a list of cleanup rule group ids from the request,
+	 * or an empty list if no cleanup is requested.
+	 *
+	 * Accepts `normalize=1|on|true|yes|all` to request all the groups that
+	 * apply to the given languages, or a list of group ids, comma-separated
+	 * and/or via multiple `normalize[]` parameters. Unknown group ids are
+	 * rejected with an OcrException.
+	 *
+	 * @param Request $request
+	 * @return string[]
+	 * @throws OcrException
+	 */
+	public function getNormalizeGroups( Request $request ): array {
+		$ids = [];
+		foreach ( (array)( $request->query->all()['normalize'] ?? null ) as $value ) {
+			foreach ( explode( ',', (string)$value ) as $id ) {
+				$id = trim( $id );
+				if ( $id !== '' ) {
+					$ids[] = mb_strtolower( $id );
+				}
+			}
+		}
+		$ids = array_values( array_unique( $ids ) );
+		if ( count( $ids ) === 1 && in_array( $ids[0], [ '1', 'on', 'true', 'yes', 'all' ], true ) ) {
+			return [ 'all' ];
+		}
+		$known = array_map( 'mb_strtolower', $this->textNormalizer->getKnownGroupIds() );
+		$unknown = array_values( array_diff( $ids, $known ) );
+		if ( $unknown !== [] ) {
+			throw new OcrException( 'normalize-param-error', [ count( $unknown ), implode( ', ', $unknown ) ] );
+		}
+		return $ids;
 	}
 
 	/**
@@ -256,8 +303,11 @@ class OcrController extends AbstractController {
 	 * @OA\Parameter(
 	 *     name="normalize",
 	 *     in="query",
-	 *     description="Normalize OCR text.",
-	 * @OA\Schema(type="boolean")
+	 *     description="Clean up the OCR text using the given groups of cleanup rules,
+	 * as defined by /api/normalize_rules (applied per selected language, in a
+	 * defined order). Use `all` for all the groups that apply
+	 * to the selected language(s).",
+	 * @OA\Schema(type="array", @OA\Items(type="string"))
 	 * )
 	 * @OA\Parameter(
 	 *     name="segmentation_model",
@@ -316,8 +366,14 @@ class OcrController extends AbstractController {
 		try {
 			$this->setup();
 		} catch ( Exception $exception ) {
+			$errorMessage = $exception instanceof OcrException
+				? $this->intuition->msg(
+					$exception->getI18nKey(),
+					[ 'variables' => $exception->getI18nParams() ]
+				)
+				: $exception->getMessage();
 			return $this->getApiResponse( [
-				"error" => $exception->getMessage(),
+				"error" => $errorMessage,
 			] );
 		}
 
@@ -352,6 +408,24 @@ class OcrController extends AbstractController {
 			}
 		}
 		return $this->getApiResponse( $out );
+	}
+
+	/**
+	 * Serve the cleanup rules used to normalize the OCR text, with CORS
+	 * headers, so they can be reused by other clients (such as the
+	 * on-Wikisource editor toolbar, see T348829).
+	 *
+	 * @OA\Response(response=200, description="The cleanup rules in JSON format, as defined per language and group.")
+	 * @return JsonResponse
+	 */
+	#[Route( '/api/normalize_rules', name: 'apiNormalizeRules', methods: [ "GET" ] )]
+	public function apiNormalizeRulesAction(): JsonResponse {
+		$response = new JsonResponse();
+		$response->setStatusCode( Response::HTTP_OK );
+		// Allow API requests from the Wikisource extension wherever it's installed.
+		$response->headers->set( 'Access-Control-Allow-Origin', '*' );
+		$response->setData( $this->textNormalizer->getRuleset() );
+		return $response;
 	}
 
 	/**
@@ -492,8 +566,15 @@ class OcrController extends AbstractController {
 		if ( !$result instanceof EngineResult ) {
 			throw new Exception( 'Incorrect (possibly cached) result: ' . var_export( $result, true ) );
 		}
-		if ( static::$params['normalize'] ) {
-			$result->normalize();
+		if ( static::$params['normalize'] !== [] ) {
+			$result = new EngineResult(
+				$this->textNormalizer->normalize(
+					$result->getText(),
+					static::$params['langs'],
+					static::$params['normalize']
+				),
+				$result->getWarnings()
+			);
 		}
 		return $result;
 	}
