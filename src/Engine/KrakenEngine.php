@@ -37,12 +37,13 @@ class KrakenEngine extends EngineBase {
 		string $imageUrl,
 		string $invalidLangsMode,
 		array $crop,
-		?array $langs = null
+		?array $models = null,
+		int $rotate = 0
 	): EngineResult {
 		// Check the URL and fetch the image data.
 		$this->checkImageUrl( $imageUrl );
 
-		[ $validLangs, $invalidLangs ] = $this->filterValidLangs( $langs, $invalidLangsMode );
+		[ $validLangs, $invalidLangs ] = $this->filterValidLangs( $models, $invalidLangsMode );
 		if ( $validLangs ) {
 			$ocrModel = $validLangs[0];
 		} else {
